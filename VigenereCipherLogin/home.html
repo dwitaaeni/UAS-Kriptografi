@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puskesmas Sukaraja</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white; /* Ubah warna latar belakang menjadi hijau toska */
+      color: #343a40;
+    }
+
+    section ul {
+  text-align: center;
+  list-style: none;
+  padding: 0;
+}
+
+section ul li {
+  display: inline-block; /* Tambahkan ini */
+  text-align: left;
+  margin: 5px 10px; /* Sesuaikan margin jika perlu */
+}
+
+
+    nav {
+      display: flex;
+      justify-content: space-between; /* Menggunakan space-between untuk meletakkan teks di kedua sisi */
+      align-items: center; /* Menengahkan vertikalnya */
+      background-color: navy;
+      padding: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    nav span{
+      color: #ffffff;
+    }
+
+    nav a:hover {
+      color: #f1f1f1;
+    }
+
+    section {
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    h2 {
+      color: #343a40;
+    }
+
+    p {
+      color: #495057;
+      font-size: 16px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .cta-button:hover {
+      color: white;
+    }
+
+    .feature {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
+
+    .feature-item {
+      text-align: center;
+      max-width: 300px;
+      margin: 0 20px 20px;
+    }
+
+    .feature-item img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .advertisement {
+      
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .advertisement img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    footer {
+      background-color: navy;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    @media screen and (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      nav a {
+        margin: 5px 0;
+      }
+
+      .feature-item {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span style="font-weight: bold; font-size: 24px;">Puskesmas Sukaraja</span>
+    <div>
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="register.php" class="cta-button">Register</a>
+      <a href="index.php" class="cta-button">Login</a>
+    </div>
+  </nav>
+
+  <section>
+    <h2>Selamat datang di Puskesmas Sukaraja</h2>
+    
+    <div class="advertisement">
+      <img src=img/puskesmas.jpg alt="Iklan Puskesmas">
+      <p>Temukan layanan kesehatan terbaik di Puskesmas Sukaraja. <br> Pelayanan ramah dan berkualitas untuk masyarakat.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-item">
+        <img src="img/1.jpg"Fitur 1">
+        <h3>Dokter & Perawat</h3>
+        <p>Dokter & Perawat yang kompeten dalam bidangnya sehingga kami bisa membantu keluhan masyarakat.</p>
+      </div>
+      <div class="feature-item">
+        <img src="img/3.jpg" alt="Fitur 2">
+        <h3>Kebersihan</h3>
+        <p>Kami selalu menjaga kebersihan pada puskesmas karna kebersihan itu awal dari kita mencegah segala penyakit.</p>
+      </div>
+      <div class="feature-item">
+        <img src="img/4.jpg" alt="Fitur 3">
+        <h3>Pelayanan</h3>
+        <p>Kami memberikan pelayanan yang terbaik agar masyarakat merasa nyaman dan aman.</p>
+      </div>
+    </div>
+  </section>
+  <section id="about">
+    <h2>Tentang Kami</h2>
+    <p>Jl.Jendral Sudirman No.23 Bekasi</p>
+    <p>Hubungi kami untuk informasi lebih lanjut:</p>
+    <ul>
+      <li><img src="img/telepon.jpg" alt="Telepon" style="width: 20px; height: 20px;"> (123) 456-7890</li>
+      <li><img src="img/email.jpg" alt="Email" style="width: 20px; height: 20px;"> puskesmas_sukaraja@example.com</li>
+      <li><img src="img/instagram.jpg" alt="Instagram" style="width: 20px; height: 20px;"> @puskesmas_sukaraja</li>
+      <li><img src="img/facebook.jpg" alt="Facebook" style="width: 20px; height: 20px;"> Puskesmas Sukaraja</li>
+    </ul>
+    
+  </section>
+  
+
+  <footer>
+    &copy; 2024 Kelompok 2
+  </footer>
+
+</body>
+</html>

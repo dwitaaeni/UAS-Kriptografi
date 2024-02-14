@@ -1,0 +1,76 @@
+<?php
+// Fungsi Dekripsi Vigenere
+function vigenere_decrypt($encrypted_text, $key) {
+    $decrypted_text = '';
+    $key_length = strlen($key);
+
+    for ($i = 0; $i < strlen($encrypted_text); $i++) {
+        $char = $encrypted_text[$i];
+        $key_char = $key[$i % $key_length];
+
+        if (ctype_alpha($char)) {
+            $case_modifier = ord('A');
+            if (ctype_lower($char)) {
+                $case_modifier = ord('a');
+            }
+            $decrypted_char = chr((ord($char) - ord($key_char) + 26) % 26 + $case_modifier);
+            $decrypted_text .= $decrypted_char;
+        } else {
+            $decrypted_text .= $char;
+        }
+    }
+
+    return $decrypted_text;
+}
+
+// Koneksi ke database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "vigenerecipher";
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Cek koneksi
+if ($conn->connect_error) {
+    die("Koneksi ke database gagal: " . $conn->connect_error);
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $key = "pelita"; // Ganti dengan kunci yang sesuai
+
+
+    // Gunakan prepared statement untuk mencegah SQL injection
+    $sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+        $encrypted_password_from_database = $row['password'];
+    
+        $decrypted_password = vigenere_decrypt($encrypted_password_from_database, $key);
+    
+        if ($password == $decrypted_password) {
+            session_start(); // Mulai sesi untuk menyimpan informasi login
+            $_SESSION['username'] = $username;
+            $_SESSION['welcome_message'] = "Selamat datang, " . $username . "! Anda telah berhasil login.";
+            header("Location: utama.php");
+            exit(); // Pastikan untuk keluar setelah redireksi header
+        } else {
+            echo "Login gagal. Periksa kembali username dan password.";
+        }
+    } else {
+        echo "Username tidak ditemukan.";
+    }
+}    
+
+
+// Tutup koneksi setelah selesai menggunakan
+$conn->close();
+?>
